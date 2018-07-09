@@ -32,7 +32,7 @@ const startGhost = async ({util, answers, serverConfig, username, docker, volume
       {
         Type: 'volume',
         Source: volume.name,
-        Target: '/cfg-volume',
+        Target: '/var/lib/ghost/content',
       },
     ],
   });
