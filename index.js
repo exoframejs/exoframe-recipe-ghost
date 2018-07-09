@@ -47,6 +47,8 @@ exports.runSetup = async ({answers, serverConfig, username, docker, util}) => {
     // create new volume for ghost data
     const ghostVolume = await docker.daemon.createVolume({Name: ghostVolumeName});
     util.logger.debug(ghostVolume);
+    // pull latest image
+    await docker.pullImage(ghostImage);
     // start ghost container
     util.logger.debug('starting ghost..');
     const ghost = await startGhost({util, answers, serverConfig, username, docker, volume: ghostVolume});
