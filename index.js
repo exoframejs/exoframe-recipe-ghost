@@ -1,9 +1,6 @@
 // images
 const ghostImage = 'ghost:latest';
 
-// volumes
-const ghostVolumeName = 'ghost-blog-data';
-
 exports.getQuestions = () => [
   {
     type: 'input',
@@ -41,6 +38,8 @@ const startGhost = async ({util, answers, serverConfig, username, docker, volume
 exports.runSetup = async ({answers, serverConfig, username, docker, util}) => {
   // init log
   const log = [];
+
+  const ghostVolumeName = answers.projectName.toLowerCase().replace(/\s/g, '-');
 
   try {
     util.logger.debug('starting work..');
